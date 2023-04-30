@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hedgehogs
 {
-    internal class HedgehogsService
+    public class HedgehogsService
     {
         public int[] GetRandomHedgehogsPopulation()
         {
@@ -34,7 +34,7 @@ namespace Hedgehogs
             if (difference / 3 > targetColorNumber)
                 return -1;
 
-            return hedgehogs.Min() + difference;
+            return sourceHedgehogs.Max();
         }
      
         private void checkArguments(IEnumerable<int> hedgehogs, int color)
