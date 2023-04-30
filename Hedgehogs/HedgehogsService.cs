@@ -12,19 +12,12 @@ namespace Hedgehogs
         {
             Random random = new();
 
-            return new int[] { random.Next(0, int.MaxValue), random.Next(0, int.MaxValue), random.Next(0, int.MaxValue) };
-        }
-
-        public int[] GetRandomHedgehogsPopulation(int maxnumberForOneColor)
-        {
-            Random random = new();
-
-            return new int[] { random.Next(1, maxnumberForOneColor), random.Next(1, maxnumberForOneColor), random.Next(1, maxnumberForOneColor) };
+            return new int[] { random.Next(1, int.MaxValue / 3), random.Next(0, int.MaxValue / 3), random.Next(0, int.MaxValue / 3) };
         }
 
         public int CalulateStepsToSameColor(int[] hedgehogs,int color)
         {            
-            checkArguments(hedgehogs);
+            checkArguments(hedgehogs, color);
 
             var targetColorNumber = hedgehogs[color];
 
@@ -43,15 +36,15 @@ namespace Hedgehogs
 
             return hedgehogs.Min() + difference;
         }
-
-      
-
-        private void checkArguments(IEnumerable<int> hedgehogs)
+     
+        private void checkArguments(IEnumerable<int> hedgehogs, int color)
         {
+            if (color < 0 || color > 2)
+                throw new ArgumentException("Color can be from 0 to 2");
             if (hedgehogs.Count() > 3)
                 throw new ArgumentException("There are only 3 color for hedgehogs");
             if (hedgehogs.Count() == 0 || hedgehogs.All(x => x == 0))
-                throw new ArgumentException("No hedgehogs");
+                throw new ArgumentException("No hedgehogs");           
         }
     }
 }
