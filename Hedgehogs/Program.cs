@@ -7,13 +7,13 @@ while (true)
 
         var hedgehogs = hedgehogsService.GetRandomHedgehogsPopulation();
 
-        Console.WriteLine($"Number of hedgehos in order to their color (red, green, blue): {hedgehogs[0]}, {hedgehogs[1]}, {hedgehogs[2]}");
+        Console.WriteLine($"Number of hedgehogs in order to their color (red, green, blue): {hedgehogs[0]}, {hedgehogs[1]}, {hedgehogs[2]}");
 
         Console.WriteLine("Enter the number of target color (red - 0, green - 1, blue - 2):");
 
         var targetColor = Int32.Parse(Console.ReadLine());
 
-        Console.WriteLine($"Number of steps to color of to target color: {hedgehogsService.CalulateStepsToSameColor(hedgehogs, targetColor)}");
+        Console.WriteLine($"Number of steps to color to target color: {hedgehogsService.CalulateStepsToSameColor(hedgehogs, targetColor)}");
 
         Console.WriteLine("End!\n\n\n\n");
     }
